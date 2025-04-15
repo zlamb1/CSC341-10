@@ -1,6 +1,6 @@
 package view;
 
-import shape.CircleShape;
+import shape.*;
 import view.event.BasicCanvasEvent;
 import view.event.IEventHandler;
 import view.prompt.PromptColor;
@@ -9,17 +9,21 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BottomToolbar extends JPanel {
+    IRandomShapeFactory shapeFactory;
+
     public BottomToolbar() {
+        shapeFactory = new RandomShapeFactory();
+
         setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
 
         add(createButton("Create", (e) -> {
-            CircleShape circleShape = new CircleShape();
-            circleShape.randomizePosition(e.getCanvasSize());
-            e.getCanvas().addShape(circleShape);
+            IShape shape = shapeFactory.createRandomShape();
+            shape.randomizePosition(e.getCanvasSize());
+            e.getCanvas().addShape(shape);
         }));
 
-        add(createButton("Change Background", (e) -> {
-            Color selectedColor = PromptColor.promptColor(Frame.getInstance());
+        add(createButton("Set Background", (e) -> {
+            Color selectedColor = PromptColor.promptColor(Frame.getInstance(), e.getCanvas().getBackground());
             if (selectedColor != null) {
                 e.getCanvas().setBackground(selectedColor);
             }

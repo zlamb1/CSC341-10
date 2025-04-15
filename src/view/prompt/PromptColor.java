@@ -6,6 +6,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class PromptColor {
     public static Color promptColor(JFrame frame) {
+        return promptColor(frame, Color.WHITE);
+    }
+
+    public static Color promptColor(JFrame frame, Color defaultColor) {
         JDialog dialog = new JDialog(frame, "Choose Color", true);
 
         JPanel contentPane = new JPanel();
@@ -16,6 +20,7 @@ public class PromptColor {
         GridBagConstraints gbc = new GridBagConstraints();
 
         JColorChooser colorChooser = new JColorChooser();
+        colorChooser.setColor(defaultColor);
 
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.gridx = 0;
