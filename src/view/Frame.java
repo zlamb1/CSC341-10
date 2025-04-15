@@ -16,8 +16,14 @@ public class Frame extends JFrame implements IFrame {
 
     private Frame(IFrameContent frameContent) {
         this.frameContent = frameContent;
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignored) {}
+
         SwingUtilities.invokeLater(() -> {
             setContentPane(frameContent.getComponent());
+            SwingUtilities.updateComponentTreeUI(this);
             setSize(500, 500);
             setLocationRelativeTo(null);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

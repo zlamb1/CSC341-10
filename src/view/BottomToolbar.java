@@ -3,6 +3,7 @@ package view;
 import shape.CircleShape;
 import view.event.BasicCanvasEvent;
 import view.event.IEventHandler;
+import view.prompt.PromptColor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +19,10 @@ public class BottomToolbar extends JPanel {
         }));
 
         add(createButton("Change Background", (e) -> {
-            e.getCanvas().setBackground(e.getCanvas().getBackground() == Color.WHITE ? Color.RED : Color.WHITE);
+            Color selectedColor = PromptColor.promptColor(Frame.getInstance());
+            if (selectedColor != null) {
+                e.getCanvas().setBackground(selectedColor);
+            }
         }));
 
         add(createButton("Remove Last", (e) -> e.getCanvas().removeLast()));
