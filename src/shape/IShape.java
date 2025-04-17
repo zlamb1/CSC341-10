@@ -1,5 +1,7 @@
 package shape;
 
+import paint.IPaint;
+
 import java.awt.*;
 
 /**
@@ -33,6 +35,17 @@ public interface IShape {
      * Randomizes the position of the shape.
      */
     void randomizePosition(Dimension maxBounds);
+
+    /**
+     * @return The shape's current paint.
+     */
+    IPaint getPaint();
+
+    /**
+     * Sets the paint of the shape.
+     * @param paint The new paint.
+     */
+    void setPaint(IPaint paint);
 
     /**
      * Draws a shape at an arbitrary position;

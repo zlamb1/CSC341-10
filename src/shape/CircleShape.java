@@ -2,7 +2,7 @@ package shape;
 
 import java.awt.*;
 
-public class CircleShape extends ColoredAbstractShape {
+public class CircleShape extends AbstractShape {
     protected int radius;
 
     public CircleShape() {
@@ -23,7 +23,7 @@ public class CircleShape extends ColoredAbstractShape {
 
     @Override
     public void drawShape(int x, int y, Graphics g) {
-        g.setColor(color);
+        paint.paint(g);
         g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
     }
 }

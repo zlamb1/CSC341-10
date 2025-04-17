@@ -1,8 +1,10 @@
 package shape;
 
+import paint.IPaint;
+
 import java.awt.*;
 
-public class DoubleCircleShape extends ColoredAbstractShape {
+public class DoubleCircleShape extends AbstractShape {
     protected int radius, halfRadius;
     protected CircleShape firstCircle, secondCircle;
 
@@ -18,10 +20,10 @@ public class DoubleCircleShape extends ColoredAbstractShape {
     }
 
     @Override
-    public void setColor(Color color) {
-        super.setColor(color);
-        firstCircle.setColor(color);
-        secondCircle.setColor(color);
+    public void setPaint(IPaint paint) {
+        super.setPaint(paint);
+        firstCircle.setPaint(paint);
+        secondCircle.setPaint(paint);
     }
 
     @Override

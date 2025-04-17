@@ -1,9 +1,13 @@
 package shape;
 
+import paint.IPaint;
+import paint.SolidPaint;
+
 import java.awt.*;
 
 public abstract class AbstractShape implements IShape {
     protected int x, y;
+    protected IPaint paint;
 
     public AbstractShape() {
         this(0, 0);
@@ -12,6 +16,7 @@ public abstract class AbstractShape implements IShape {
     public AbstractShape(int x, int y) {
         this.x = x;
         this.y = y;
+        paint = new SolidPaint(Color.BLACK);
     }
 
     @Override
@@ -38,6 +43,16 @@ public abstract class AbstractShape implements IShape {
     public void randomizePosition(Dimension maxBounds) {
         x = (int) (Math.random() * maxBounds.getWidth());
         y = (int) (Math.random() * maxBounds.getHeight());
+    }
+
+    @Override
+    public IPaint getPaint() {
+        return paint;
+    }
+
+    @Override
+    public void setPaint(IPaint paint) {
+        this.paint = paint;
     }
 
     @Override
